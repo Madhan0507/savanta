@@ -46,12 +46,8 @@ function noBack()
     var ele=$('input[name="A5a"]');
     var A5atext='';
     var ans='';
-    if($('input[name="A5a"]').is(':checked')){
-        $('#error').hide();
-        ans=$('input[name="A5a"]:checked').attr('id');
-        A5atext=$('label[for="'+ans+'"]').text();
-        window.localStorage.setItem('A5aAns',$('input[name="A5a"]:checked').val());
-        window.localStorage.setItem('A5atext',A5atext);
+    if($('input[name="Q5_1"]').is(':checked') && $('input[name="Q5_2"]').is(':checked')){
+        
         return true;
     }
     else{

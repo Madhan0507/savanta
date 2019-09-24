@@ -1,0 +1,85 @@
+<?php 
+session_start();
+include("includes/config.php");
+$temp = '';
+$Entrysts = '';
+if (isset($_SESSION["opt"]))
+{
+    $temp = $_SESSION["opt"];
+    
+}
+
+
+date_default_timezone_set("Asia/Kolkata");
+$ETime = date("Y-m-d H:i:s");
+if($temp == 1)
+  $Entrysts= 'E';
+else
+  $Entrysts= 'F';
+
+  mysql_query("update ".$PtabName." set
+                 EntryStatus='$Entrysts',
+                 Etime='$ETime',
+                 Screen='".basename($_SERVER['PHP_SELF'])."' where AutoID =".$_SESSION['AutoID']);
+
+
+?>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title><?php print_r($PrjName) ?></title>
+    
+    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style-1.css">    
+    <script src='js/jquery-1.11.3.js' type="text/javascript"></script>
+
+       <script src='js/app.js' type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+var temp = "<?php echo $temp; ?>";
+$(document).ready(function(){
+  if(parseInt(temp) == 1){
+    $('#Q10').empty();
+    $('#Q10').append('<h3>Thank you for taking the Survey.We will get back to you soon.</h3> ');
+  }
+  else {
+    $('#Q10').empty();
+    $('#Q10').append('<h3><br /><br />Thank you for taking the Survey</h3> ');
+  }
+
+});
+</script>
+      <div class="col-md-10 offset-md-1 col-sm-12">
+         
+          <div class="reg-form col-md-8 offset-md-2 offset-sm-2 col-sm-8" style="display: flex;align-items: center;
+    height: 58Vh; justify-content: center;">
+        <div class="form-wrapper">
+  
+ 
+  <form   action="<?php echo(basename($_SERVER['PHP_SELF'],".php")) ?>_RD.php" method="POST" >
+    <div id="Q10" >
+   <h3>Thank you for taking the Survey.</h3>
+    <br/>
+   </div>
+    <input type="submit" class="btn btn-outline-info" value="Submit">
+   <br/>
+
+   
+    
+    
+    <!--<button id="next" class="nextla" type="submit" >Submit >></button>-->
+
+<!--<p id="pwd">Powered by <a href="http://www.frdass.com" target="_blank"><i >DASS </i></a></p>-->
+</form>
+  
+</div>
+        
+        </div>
+      </div>  
+ 
+</body>
+</html>

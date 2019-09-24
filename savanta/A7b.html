@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title></title>    
+     
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style-1.css">    
+    <script  type="text/javascript" src='js/jquery.min.js'></script>
+    <script  type="text/javascript" src='js/app.js'></script>
+    <script type="text/javascript" src="js/langtext.js"></script>
+</head>
+<body onload="noBack();" >
+<script type="text/javascript">
+$(function(){
+
+});
+
+function noBack()
+  { 
+
+    createElement('A7b',"checkbox",QnsMain[6],'#question-card',"chkAns");
+     $('#A7b_7').on('click', function(){
+        if($('#A7b_7').is(':checked') == true)
+          $('#othertext').val('').show();
+        else
+          $('#othertext').hide();
+
+    });
+} 
+
+  function Validate(){
+    var flag = false;
+  $('#error').hide();
+  $('#error1').hide();
+    for (var i = 1; i <= 7; i++) {
+      if($('#A7b_'+parseInt(i)).is(':checked') == true)
+      {
+        flag=true;
+        break;
+      }
+      else{
+        flag=false;
+      }
+    }
+    if(flag == true){
+      if($('#A7b_7').is(':checked') && $('#othertext').val().trim() == '')   {
+         $('#error1').show();
+        return false;
+      }
+      else{
+        return true;
+      }
+    }
+    else{
+        $('#error').show();
+        return false;
+    }
+  }
+</script>
+
+         
+
+        
+         <div class="form-wrapper col-md-8  offset-md-2 col-sm-12">
+           <!--<div class="col-md-4">
+              <img src="images/Q1.png">
+           </div>-->
+
+        <div class="col-md-10 offset-md-1" >   
+        
+    <form action="A8c.html" method="POST" onsubmit="return Validate();">
+      <p id="error" style="display: none;">Please Select option</p>
+      <p id="error1" style="display: none;color: red">Please Enter others</p>
+        <p id="lbl-Intro"></p><p id="lbl-Intro1"></p>
+        <div id="question-card">
+            
+        </div>
+         <div class="col-md-3 p-0">
+          <input type="text"  value="" class="form-control remspecchar" id="othertext" name="" style="display: none;" >
+        </div>
+         <div class="d-flex justify-content-center">
+       <button id="back" type="button" class="btn btn-outline-success m-5" onclick="window.location.href='A6.html'"><< Back</button>
+       <button type="submit" id="next" class="btn btn-outline-success m-5">Next >></button>
+     </div>
+  </form>
+</div>
+        
+        
+        </div>
+
+     
+ 
+</body>
+</html>

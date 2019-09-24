@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title></title>    
+     
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style-1.css">    
+    <script  type="text/javascript" src='js/jquery.min.js'></script>
+    <script  type="text/javascript" src='js/app.js'></script>
+    <script type="text/javascript" src="js/langtext.js"></script>
+</head>
+<body onload="noBack();" >
+<script type="text/javascript">
+$(function(){
+
+});
+
+function noBack()
+  { 
+
+    createElement('A1a',"radio",QnsMain[2],'#question-card',"rbtnYes");
+     
+} 
+
+  function Validate(){
+    var ele=$('input[name="A1a"]');
+    var A1atext='';
+    var ans='';
+    if($('input[name="A1a"]').is(':checked')){
+        $('#error').hide();
+        ans=$('input[name="A1a"]:checked').attr('id');
+        A1atext=$('label[for="'+ans+'"]').text();
+        window.localStorage.setItem('A1aAns',$('input[name="A1a"]:checked').val());
+        window.localStorage.setItem('A1atext',A1atext);
+        return true;
+    }
+    else{
+        $('#error').show();
+        return false;
+    }
+  }
+</script>
+
+         
+
+        
+         <div class="form-wrapper col-md-8  offset-md-2 col-sm-12">
+           <!--<div class="col-md-4">
+              <img src="images/Q1.png">
+           </div>-->
+
+        <div class="col-md-10 offset-md-1" >   
+        
+    <form action="A1b.html" method="POST" onsubmit="return Validate();">
+      <p id="error" style="display: none;">Please Select option</p>
+        <p id="lbl-Intro"></p><p id="lbl-Intro1"></p>
+        <div id="question-card">
+            
+        </div>
+         <div class="d-flex justify-content-center">
+       <button id="back" type="button" class="btn btn-outline-success m-5" onclick="window.location.href='X10.html'"><< Back</button>
+       <button type="submit" id="next" class="btn btn-outline-success m-5">Next >></button>
+     </div>
+  </form>
+</div>
+        
+        
+        </div>
+
+     
+ 
+</body>
+</html>
